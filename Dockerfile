@@ -1,6 +1,7 @@
 FROM debian
 
 RUN apt-get update && apt-get install -y \
+      apache2-utils              \
       python-bootstrapform       \
       python-django              \
       python-django-registration \
