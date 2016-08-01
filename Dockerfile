@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
       python-pypdf2              \
       python-sparqlwrapper       \
       python-svn                 \
-      python-whoosh               && \
+      python-whoosh              \
+      subversion                 && \
       rm -rf /var/lib/apt/lists/* && \
       echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen && \
       locale-gen
