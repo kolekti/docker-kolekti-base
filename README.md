@@ -1,9 +1,21 @@
-kolekti docker base image
+Kolekti runtime environment
 =========================
 
-Dockerfile for running kolekti with needed dependencies.
-Run with:
+This is a docker-compose setup with git submodules.
+
+Usage
+---
+
+Clone and run:
     
-    docker run --rm -v $(pwd):/kolekti -p 8000:8000 -ti  kolekti
+    git submodule update --init
+    docker-compose up
     
-from a kolekti git repo
+To customize the instance add or modify variables declared in the docker-compose.yml file in the `.env` file.
+
+Requirements
+-------
+
+* docker
+* docker-compose
+* git
