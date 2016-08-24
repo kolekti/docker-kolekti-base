@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
       python-sparqlwrapper       \
       python-svn                 \
       python-whoosh              \
+      w3c-dtd-xhtml		 \
       subversion                 \
       libfontconfig1              && \
       rm -rf /var/lib/apt/lists/* && \
