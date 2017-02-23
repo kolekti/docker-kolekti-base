@@ -1,0 +1,6 @@
+pygal
+django==1.8
+django-registration
+django-bootstrap-form
+celery
+redis
