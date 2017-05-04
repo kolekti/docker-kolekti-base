@@ -1,5 +1,8 @@
 pygal
 django==1.8
+django-js-reverse
+django-allauth
+django-invitations
 django-registration
 django-bootstrap-form
 celery
