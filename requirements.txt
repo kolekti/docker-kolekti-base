@@ -1,5 +1,5 @@
 pygal
-django==1.8
+django==1.11
 django-js-reverse
 django-allauth
 django-invitations

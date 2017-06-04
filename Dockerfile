@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
       subversion \
       rabbitmq-server \
       libfontconfig1 \
+      apache2-utils \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* 
 
@@ -45,7 +46,6 @@ RUN python -c 'from urllib import urlretrieve; urlretrieve("https://bitbucket.or
       tar jxvfO /tmp/phantomjs.bz2 phantomjs-2.1.1-linux-x86_64/bin/phantomjs > /usr/bin/phantomjs && chmod +x /usr/bin/phantomjs && rm /tmp/phantomjs.bz2
 
 ADD requirements.txt /requirements.txt
-
 RUN pip install -r /requirements.txt
 
 ADD entrypoint.sh /
