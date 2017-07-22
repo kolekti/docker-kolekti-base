@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
       libgif4 \
       ghostscript \
       gsfonts \
+      python-dev \   
       gunicorn \
       python-lxml \
       python-pil \
@@ -47,6 +48,20 @@ RUN python -c 'from urllib import urlretrieve; urlretrieve("https://bitbucket.or
 
 ADD requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
+
+# Install nodejs
+RUN wget https://deb.nodesource.com/setup_8.x \
+    && bash ./setup_8.x \
+    && apt-get update && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+          
+# Install gulp
+RUN npm install -g gulp-cli \
+ && npm install gulp \
+ && npm install gulp-load-plugins \
+ && npm install gulp-csso \
+ && npm install gulp-less
 
 ADD entrypoint.sh /
 ADD kolekti.ini /etc/kolekti.ini

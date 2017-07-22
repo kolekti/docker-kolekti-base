@@ -6,5 +6,6 @@ django-invitations
 django-registration
 django-bootstrap-form
 django-notify-x
+django-gulp
 celery
 redis
