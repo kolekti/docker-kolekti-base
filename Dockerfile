@@ -61,6 +61,7 @@ RUN npm install -g gulp-cli \
  && npm install gulp \
  && npm install gulp-load-plugins \
  && npm install gulp-csso \
+ && npm install gulp-rename \
  && npm install gulp-less
 
 ADD entrypoint.sh /
