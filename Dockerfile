@@ -47,8 +47,31 @@ RUN python -c 'from urllib import urlretrieve; urlretrieve("https://bitbucket.or
       tar jxvfO /tmp/phantomjs.bz2 phantomjs-2.1.1-linux-x86_64/bin/phantomjs > /usr/bin/phantomjs && chmod +x /usr/bin/phantomjs && rm /tmp/phantomjs.bz2
 
 ADD requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
+RUN pip install -r /requirements.txt \
+    && pip install --ignore-installed six==1.10.0 
 
+RUN apt-get update \
+    && apt-get install -y pkg-config autoconf2.13 libtool gtk-doc-tools flex bison libpng-dev libpoppler-dev librsvg2-dev libharfbuzz-dev libfreetype6-dev libffi-dev \
+    && export LD_LIBRARY_PATH=/usr/local/lib \
+    && wget  http://cairographics.org/snapshots/cairo-1.15.8.tar.xz \
+    && tar xvfJ cairo-1.15.8.tar.xz \
+    && cd /cairo-1.15.8 \
+    && ./autogen.sh \
+    && ./configure \
+    && make install \
+    && cd / \
+    && wget http://ftp.gnome.org/pub/gnome/sources/pango/1.38/pango-1.38.1.tar.xz \
+    && tar xvfJ pango-1.38.1.tar.xz \
+    && cd /pango-1.38.1 \
+    && ./autogen.sh \
+    && ./configure \
+    && make install \
+    && cd / \
+    && apt-get purge -y python-cffi \
+    && pip install cffi cairocffi WeasyPrint \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+            
 # Install nodejs
 RUN wget https://deb.nodesource.com/setup_8.x \
     && bash ./setup_8.x \
