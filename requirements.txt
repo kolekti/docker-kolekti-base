@@ -3,7 +3,7 @@ django==1.11
 django-js-reverse
 django-allauth
 django-invitations
-# django-registration
+django-registration
 django-bootstrap-form
 django-notify-x
 django-gulp
