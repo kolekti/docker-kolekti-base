@@ -1,7 +1,6 @@
 Kolekti runtime environment
 =========================
 
-
 This is a docker-compose setup with git submodules.
 
 Usage
