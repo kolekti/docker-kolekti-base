@@ -2,6 +2,7 @@ FROM debian:jessie
 
 RUN apt-get update && apt-get install -y \
       sudo \
+      apt-utils \
       wget \
       git \
       make \
@@ -37,6 +38,8 @@ RUN sed -i 's/$/ contrib/' /etc/apt/sources.list \
   && rm -rf /var/lib/apt/lists/* \
   && rm /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 
+
+
 # Install PrinceXML
 ENV PRINCE=prince_11.1-1_debian8.0_amd64.deb
 RUN wget https://www.princexml.com/download/$PRINCE \
@@ -68,10 +71,12 @@ RUN apt-get update \
     && make install \
     && cd / \
     && apt-get purge -y python-cffi \
-    && pip install cffi cairocffi WeasyPrint \
+    && pip install cffi cairocffi \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-            
+
+RUN pip install WeasyPrint==0.41
+
 # Install nodejs
 RUN wget https://deb.nodesource.com/setup_8.x \
     && bash ./setup_8.x \
@@ -86,6 +91,15 @@ RUN npm install -g gulp-cli \
  && npm install gulp-csso \
  && npm install gulp-rename \
  && npm install gulp-less
+
+# Install ghostscript 9.20 (from stretch)
+COPY apt-stretch-sources /etc/apt/sources.list.d/stretch.list
+COPY apt-preferences /etc/apt/preferences
+run apt-get update && apt-get install --reinstall -y \
+    ghostscript=9.20~dfsg-3.2+deb9u1 \
+    libgs9=9.20~dfsg-3.2+deb9u1 \
+    libgs9-common=9.20~dfsg-3.2+deb9u1
+
 
 ADD entrypoint.sh /
 ADD kolekti.ini /etc/kolekti.ini
