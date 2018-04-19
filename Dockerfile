@@ -36,6 +36,7 @@ RUN sed -i 's/$/ contrib/' /etc/apt/sources.list \
      fontconfig \
      msttcorefonts \
      fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp \
+     fonts-ipafont-gothic fonts-ipafont-mincho fonts-lato fonts-lmodern fonts-sil-padauk fonts-unfonts-core fonts-unfonts-extra  \
      ttf-unifont \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
