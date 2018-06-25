@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
       python-sparqlwrapper \
       python-svn \
       python-whoosh \
+      python-unidecode \
       w3c-dtd-xhtml \
       subversion \
       rabbitmq-server \
@@ -36,6 +37,7 @@ RUN sed -i 's/$/ contrib/' /etc/apt/sources.list \
      msttcorefonts \
      fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp \
      fonts-ipafont-gothic fonts-ipafont-mincho fonts-lato fonts-lmodern fonts-sil-padauk fonts-unfonts-core fonts-unfonts-extra \
+     ttf-unifont \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && rm /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
