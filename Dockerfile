@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
       python-sparqlwrapper \
       python-svn \
       python-whoosh \
+      python-unidecode \
       w3c-sgml-lib \
       subversion \
       rabbitmq-server \
