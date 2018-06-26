@@ -46,7 +46,7 @@ RUN sed -i 's/$/ contrib/' /etc/apt/sources.list \
 
 
 # Install PrinceXML
-ENV PRINCE=prince_20180328-1_debian9.1_amd64.deb
+ENV PRINCE=prince_12-1_debian9.1_amd64.deb
 RUN wget https://www.princexml.com/download/$PRINCE \
   && dpkg -i $PRINCE \
   && rm -r $PRINCE
