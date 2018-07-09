@@ -7,5 +7,6 @@ django-registration==2.2
 django-bootstrap-form
 django-notify-x
 django-gulp
+django-grappelli==2.10.2
 celery
 redis
