@@ -24,10 +24,8 @@ RUN apt-get update && apt-get install -y \
       subversion \
       rabbitmq-server \
       libfontconfig1 \
-      apache2-utils \
-      && apt-get clean \
-      && rm -rf /var/lib/apt/lists/* 
-
+      apache2-utils
+      
 # Install fonts
 # NOTE: must enable contrib apt repository for msttcorefonts
 # NOTE: must remove bitmap-fonts.conf due to fontconfig bug
@@ -38,8 +36,6 @@ RUN sed -i 's/$/ contrib/' /etc/apt/sources.list \
      fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp \
      fonts-ipafont-gothic fonts-ipafont-mincho fonts-lato fonts-lmodern fonts-sil-padauk fonts-unfonts-core fonts-unfonts-extra \
      ttf-unifont \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* \
   && rm /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 
 
@@ -75,18 +71,15 @@ RUN apt-get update \
     && make install \
     && cd / \
     && apt-get purge -y python-cffi \
-    && pip install cffi cairocffi \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && pip install cffi cairocffi 
+
 
 RUN pip install WeasyPrint==0.41
 
 # Install nodejs
 RUN wget https://deb.nodesource.com/setup_8.x \
     && bash ./setup_8.x \
-    && apt-get update && apt-get install -y nodejs \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get update && apt-get install -y nodejs
           
 # Install gulp
 RUN npm install -g gulp-cli \
@@ -104,6 +97,8 @@ run apt-get update && apt-get install --reinstall -y \
     libgs9=9.20~dfsg-3.2+deb9u1 \
     libgs9-common=9.20~dfsg-3.2+deb9u1
 
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* 
 
 ADD entrypoint.sh /
 ADD kolekti.ini /etc/kolekti.ini
