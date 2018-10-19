@@ -9,3 +9,5 @@ django-notify-x
 django-gulp
 celery
 redis
+diff_match_patch
+xmldiff
