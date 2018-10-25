@@ -7,6 +7,7 @@ django-registration==2.2
 django-bootstrap-form
 django-notify-x
 django-gulp
+pygments
 celery
 redis
 diff_match_patch
