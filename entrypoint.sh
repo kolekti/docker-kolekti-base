@@ -6,7 +6,11 @@ if [ -z "$UID" ] ; then
   UID=0
 fi
 
-[ -e /var/log/kolekti ] && chown -R ${UID}:${GID} /var/log/kolekti /projects /db /svn /static
+[ -e /var/log/kolekti ] && chown -R ${UID}:${GID} /var/log/kolekti
+[ -e /projects ]        && chown -R ${UID}:${GID} /projects
+[ -e /svn ]             && chown -R ${UID}:${GID} /svn 
+[ -e /static ]          && chown -R ${UID}:${GID} /static
+[ -e /db ]              && chown -R ${UID}:${GID} /db
 
 export LD_LIBRARY_PATH=/usr/local/lib
 

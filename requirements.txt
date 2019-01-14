@@ -12,3 +12,4 @@ celery
 redis
 diff_match_patch
 xmldiff
+mysqlclient

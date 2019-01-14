@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
       python-svn \
       python-whoosh \
       python-unidecode \
+      python-mysqldb \
       w3c-sgml-lib \
       subversion \
       rabbitmq-server \
@@ -83,7 +84,7 @@ RUN pip install -r /requirements.txt \
 RUN apt-get update \
      && apt-get install -y  libpng-dev libpoppler-dev librsvg2-dev libharfbuzz-dev libfreetype6-dev libffi-dev
 
-RUN pip install WeasyPrint
+RUN pip install WeasyPrint==0.42.3
 
 # Install nodejs
 RUN wget https://deb.nodesource.com/setup_8.x \
