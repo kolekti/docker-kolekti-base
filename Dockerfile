@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
       libcurl3 \
       libgif7 \
       libpixman-1-0 \
-      ghostscript \
+#      ghostscript \
       gsfonts \
       python-dev \   
       gunicorn \
@@ -108,6 +108,13 @@ RUN npm install -g gulp-cli \
 #     ghostscript=9.20~dfsg-3.2+deb9u1 \
 #     libgs9=9.20~dfsg-3.2+deb9u1 \
 #     libgs9-common=9.20~dfsg-3.2+deb9u1
+
+# Install ghostscript 9.20 (from tarball)
+RUN wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs920/ghostscript-9.20-linux-x86_64.tgz \
+    && tar xf ghostscript-9.20-linux-x86_64.tgz -C /opt \
+    && update-alternatives --force --install /usr/bin/gs gs /opt/ghostscript-9.20-linux-x86_64/gs-920-linux_x86_64 999
+    
+
 
 
 ADD entrypoint.sh /
