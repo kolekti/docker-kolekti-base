@@ -1,7 +1,7 @@
 pygal
 django==1.11
 django-js-reverse
-django-allauth
+django-allauth==0.40.0
 django-invitations
 django-registration==2.2
 django-bootstrap-form
@@ -10,6 +10,7 @@ django-gulp
 pygments
 celery
 redis
-diff_match_patch
+diff_match_patch==20121119
 xmldiff
 mysqlclient
+WeasyPrint==0.42.3
